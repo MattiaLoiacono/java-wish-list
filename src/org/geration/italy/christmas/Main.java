@@ -9,7 +9,7 @@ public class Main {
 		
 		Scanner scan = new Scanner(System.in);
 		ArrayList<String> lista = new ArrayList<String>();
-		String continua;
+		String continua, nome, indirizzo;
 		
 		do {
 			System.out.print("Aggiungi elemento alla tua lista dei desideri: ");
@@ -24,11 +24,18 @@ public class Main {
 			} while (!continua.equals("s") && !continua.equals("n"));
 		} while (continua.equals("s"));
 		
-		System.out.println("Ecco la tua lista: ");
+		System.out.print("Inserisci il tuo nome: ");
+		nome = scan.nextLine();
+		System.out.print("Iserisci il tuo indirizzo: ");
+		indirizzo = scan.nextLine();
 		
-		for(String s: lista) {
-			System.out.println(s);
+		try {
+			LetteraBabboNatale lettera = new LetteraBabboNatale(nome, indirizzo, lista);
+			lettera.invio();
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
 		}
+		
 		scan.close();
 	}
 
